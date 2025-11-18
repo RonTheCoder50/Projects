@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather based-WebApp</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="app.js"></script>
+
+</head>
+
+<body class="bg-gray-300 min-h-screen flex flex-col justify-between gap-20 h-full">
+
+    <!-- nav -->
+    <div class="h-14 w-full flex justify-center items-center p-5 bg-black/90">
+        <h1 class="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-wide md:tracking-wider font-medium font-serif">
+            Weather WebApp
+        </h1>
+    </div>
+
+    <!-- UI of Weather based app -->
+    <div class="bg-white shadow-sm w-full max-w-[90%] mx-auto sm:max-w-[450px] p-5 rounded-md text-black flex flex-col gap-8">
+        <!-- top-1 -->
+        <div class="flex justify-between items-center w-full relative">
+            <div id="top-1" class="flex flex-col gap-2 tracking-wide">
+                <div class="flex items-center gap-2">
+                    <h1 id="city" class="text-xl sm:text-2xl font-medium cursor-not-allowed">
+                        Navi Mumbai 
+                    </h1>
+
+                    <h2 id="country" class="text-base sm:text-lg font-light mt-1 cursor-not-allowed">
+                        India
+                    </h2>
+                </div>
+
+                <span id="date" class="text-sm sm:text-base">
+                    11 November, 2025
+                </span>
+            </div>
+
+            <!-- search input bar -->
+            <input id="inp" type="" class="hidden h-12 my-2 p-2 border w-[85%] rounded-md tracking-wide placeholder:text-lg" placeholder="search area."> 
+
+            <button id="inpBtn" class="hidden absolute left-[45%] -translate-x-1/2 mt-28 w-[120px] rounded-sm p-2 text-base tracking-wide bg-black text-white shadow-sm cursor-pointer hover:scale-[1.02]">
+                search
+            </button>
+
+            <svg id="search" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+            class="size-6 scale-[1.2] cursor-pointer mr-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+
+            <svg id="cross" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[1.2] hidden mr-4 cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+
+        </div>
+
+        <!-- top-2 -->
+        <div class="flex justify-between items-center text-gray-800">
+            <div class="flex items-start gap-1">
+                <span id="degree" class="text-4xl font-semibold font-['Arial']">
+                    10
+                </span>
+
+                <span class="font-serif text-xl -translate-y-2">
+                    0
+                </span>
+            </div>
+
+            <img id="weather-I" src="" alt="weather condtion">
+        </div>
+
+        <!-- mid -->
+        <div class="w-full max-w-[95%] grid grid-cols-3 bg-gray-200 rounded-xl mx-auto">
+            <div class="flex flex-col items-center gap-2 tracking-wide p-4 hover:bg-gray-100 rounded-l-xl transition-all delay-75 duration-150 ease-linear drop-shadow-sm">
+                <i class="fa-solid fa-wind scale-[1.2]"></i>
+
+                <span id="panel-W" class="text-sm font-normal">
+                    34 km/h
+                </span>
+                
+                <span id="wind" class="font-light text-sm md:text-base text-gray-600">
+                    Wind
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 tracking-wide p-4 hover:bg-gray-100 transition-all delay-75 duration-150 ease-linear drop-shadow-sm">
+                <i class="fa-solid fa-droplet scale-[1.2]"></i>
+
+                <span id="panel-H" class="text-sm font-normal">
+                    63%
+                </span>
+                
+                <span id="Humidity" class="font-light text-sm md:text-base  text-gray-600">
+                    Humidity
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 tracking-wide p-4 hover:bg-gray-100 rounded-r-xl transition-all delay-75 duration-150 ease-linear drop-shadow-sm">
+                <i class="fa-solid fa-radiation"></i>
+
+                <span id="panel-UV" class="text-sm font-normal">
+                    0
+                </span>
+                
+                <span class="font-light text-sm md:text-base text-gray-600">
+                    UV
+                </span>
+            </div>
+
+        </div>
+
+        <!-- bottom -->
+        <div class="flex flex-col gap-2">
+            <h2 class="text-base tracking-wide font-medium underline underline-offset-2">
+                Past 7 days weather updates
+            </h2>
+
+            <div class="flex items-center gap-3 overflow-x-auto w-full bg-gray-500/80 text-white rounded-md">
+                <!-- day 1-->
+                <div class="p-2 flex flex-col items-center gap-2 border-r min-w-[110px]">
+                    <span id="day1_d">
+                        Mon
+                    </span>
+
+                    <img id="day1_i"  class="h-[50px] w-[50px]" src="" alt="">
+
+                    <div class="flex gap-2 items-center">
+                        <div class="flex items-start">
+                            <span id="day1_t">
+                                5
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+
+                        <span >
+                            |
+                        </span>
+
+                        <div class="flex items-start">
+                            <span id="day1_f">
+                                10
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- day 2 -->
+                <div class="p-2 flex flex-col items-center gap-2 border-r min-w-[110px]">
+                    <span id="day2-d">
+                    Tue
+                    </span>
+
+                    <img id="day2_i" class="h-[50px] w-[50px]" src="" alt="">
+
+                    <div class="flex gap-2 items-center">
+                        <div class="flex items-start">
+                            <span id="day2_t">
+                                5
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+
+                        <span >
+                            |
+                        </span>
+
+                        <div class="flex items-start">
+                            <span id="day2_f">
+                                10
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- day 3 -->
+                <div class="p-2 flex flex-col items-center gap-2 border-r min-w-[110px]">
+                    <span id="day3_d">
+                        Wed
+                    </span>
+
+                    <img id="day3_i" class="h-[50px] w-[50px]" src="" alt="">
+
+                    <div class="flex gap-2 items-center">
+                        <div class="flex items-start">
+                            <span id="day3_t">
+                                5
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+
+                        <span >
+                            |
+                        </span>
+
+                        <div class="flex items-start">
+                            <span id="day3_f">
+                                10
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- day 4-->
+                <div class="p-2 flex flex-col items-center gap-2 border-r min-w-[110px]">
+                    <span id="day4_d">
+                        Thu
+                    </span>
+
+                    <img id="day4_i" class="h-[50px] w-[50px]" src="" alt="">
+
+                    <div class="flex gap-2 items-center">
+                        <div class="flex items-start">
+                            <span id="day4_t">
+                                5
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+
+                        <span >
+                            |
+                        </span>
+
+                        <div class="flex items-start">
+                            <span id="day4_f">
+                                10
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- day 5 -->
+                <div class="p-2 flex flex-col items-center gap-2 border-r min-w-[110px]">
+                    <span id="day5_d">
+                        Fri
+                    </span>
+
+                    <img id="day5_i" class="h-[50px] w-[50px]" src="" alt="">
+
+                    <div class="flex gap-2 items-center">
+                        <div class="flex items-start">
+                            <span id="day5_t">
+                                5
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+
+                        <span >
+                            |
+                        </span>
+
+                        <div class="flex items-start">
+                            <span id="day5_f">
+                                10
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- day 6 -->
+                <div class="p-2 flex flex-col items-center gap-2 border-r min-w-[110px]">
+                    <span id="day6_d">
+                        Sat
+                    </span>
+
+                    <img id="day6_i" class="h-[50px] w-[50px]" src="" alt="">
+
+                    <div class="flex gap-2 items-center">
+                        <div class="flex items-start">
+                            <span id="day6_t">
+                                5
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+
+                        <span >
+                            |
+                        </span>
+
+                        <div class="flex items-start">
+                            <span id="day6_f">
+                                10
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- day 7 -->
+                <div class="p-2 flex flex-col items-center gap-2 min-w-[110px]">
+                    <span id="day7_d">
+                        Sun
+                    </span>
+
+                    <img id="day7_i" class="h-[50px] w-[50px]" src="" alt=""> 
+
+                    <div class="flex gap-2 items-center">
+                        <div class="flex items-start">
+                            <span id="day7_t">
+                                5
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+
+                        <span >
+                            |
+                        </span>
+
+                        <div class="flex items-start">
+                            <span id="day7_f">
+                                10
+                            </span>    
+
+                            <span class="font-serif text-xs">
+                                0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- end day here -->
+            </div>
+        </div> 
+    </div>
+
+    <!-- footer -->
+    <div class="w-full bg-gray-800 p-5 text-white tracking-wide flex flex-col flex-1 gap-4 items-center">
+        <div class="flex flex-col gap-5 sm:flex-row items-center p-2 w-full sm:justify-around">
+            <div class="flex items-center gap-2 tracking-wide">
+                <span class="text-base sm:text-xl hover:text-white/60 hover:underline underline-offset-2 decoration-blue-900 cursor-pointer">
+                    GitHub
+                </span>
+
+                <i class="fa-brands fa-github mt-1 scale-[1.2]"></i>
+            </div>
+
+            
+            <div class="flex items-center gap-2 tracking-wide">
+                <span class="text-base sm:text-xl hover:text-white/60 hover:underline underline-offset-2 decoration-blue-900 cursor-pointer">
+                    Twitter
+                </span>
+                
+                <i class="fa-brands fa-twitter mt-1 scale-[1.2]"></i>
+            </div>
+
+            <div class="flex items-center gap-2 tracking-wide">
+                <span class="text-base sm:text-xl hover:text-white/60 hover:underline underline-offset-2 decoration-blue-900 cursor-pointer">
+                    Linkedin
+                </span>
+
+                <i class="fa-brands fa-linkedin mt-1 scale-[1.2]"></i>
+            </div>
+        </div>
+
+        <h2 class="text-sm flex items-center gap-1 tracking-wide">
+            Made by  
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+            class="size-6 text-red-500 scale-[0.8]">
+            <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+            </svg>
+
+            By RonTheCoder!
+        </h2>
+    </div>
+
+</body>
+
+</html>
