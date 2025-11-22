@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce site</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+     <script src="js/app.js"></script>
+</head>
+<body class="w-full min-h-screen flex flex-col justify-between gap-8 bg-gray-300">
+
+    <!-- section-1 -->
+    <section id="main_section1" class="flex flex-col gap-4">
+        <!--- nav-bar -->
+        <div class="fixed top-0 z-50 w-full p-4 flex flex-wrap justify-between md:justify-around items-center sm:flex-col sm:gap-3 lg:flex-row lg:gap-0 bg-[#FFEBED] hover:shadow-sm hover:shadow-sky-300">
+            <!-- logo -->
+            <div class="flex items-center gap-1 sm:gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.8] sm:scale-[0.9]">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+                </svg>
+                
+                <h2 id="logo" class="font-serif text-sm md:text-base lg:text-lg tracking-wide font-semibold underline underline-offset-2 decoration-2 decoration-blue-300">
+                    E-Commerce Site
+                </h2>
+            </div>
+             
+            <!-- screen < 640px dropdown | for small screens-->
+            <div class="flex flex-col gap-1 relative sm:hidden">
+                <svg id="barToggler" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" 
+                class="size-5 hover:bg-gray-200 rounded-full p-1 scale-[1.7] cursor-pointer hover:shadow-sm">
+                <path fill-rule="evenodd" d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+                
+                <div id="drop_list" class="z-50 hidden absolute w-full min-w-[150px] sm:max-w-[200px] bg-[#FFEBED] font-['Arial', 'Roboto'] flex flex-col gap-1 p-1 text-sm tracking-wide font-normal right-0 top-6 shadow-sm rounded-md">
+                    
+                    <div class="w-full flex justify-start items-center gap-2 bg-white hover:bg-white/50 p-1.5 group cursor-pointer homeIcon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.9]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                        </svg>
+
+                        <a href="#" class="w-[50%] text-center font-normal mt-0.5 uppercase group-hover:underline underline-offset-2 decoration-blue-400 group-hover:text-gray-600">Home</a>
+                    </div>
+
+                    <div class="w-full flex justify-start items-center gap-2 bg-white hover:bg-white/50 p-1.5 group cursor-pointer cartIcon">
+                        <i class="fa-solid fa-cart-arrow-down scale-125 mt-1 ml-1"></i>
+
+                        <a href="#" class="w-[50%] text-center font-normal mt-0.5 uppercase group-hover:underline underline-offset-2 decoration-blue-400 group-hover:text-gray-600">Cart</a>
+                    </div>
+
+                    <div class="w-full flex justify-start items-center gap-2 bg-white hover:bg-white/50 p-1.5 group cursor-pointer productIcon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.9]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                        </svg>
+
+                        <a href="#" class="w-[50%] text-center font-normal mt-0.5 uppercase group-hover:underline underline-offset-2 decoration-blue-400 group-hover:text-gray-600">Products</a>
+                    </div>
+
+                    
+                    <div class="w-full flex justify-start items-center gap-2 bg-white hover:bg-white/50 p-1.5 group cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.9]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+
+
+                        <a href="#" class="w-[50%] text-center font-normal mt-0.5 uppercase group-hover:underline underline-offset-2 decoration-blue-400 group-hover:text-gray-600">Sign Up</a>
+                    </div>
+
+                    
+                    <div class="w-full flex justify-start items-center gap-2 bg-white hover:bg-white/50 p-1.5 group cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.9]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                        </svg>
+
+                        <a href="#" class="w-[50%] text-center font-normal mt-0.5 uppercase group-hover:underline underline-offset-2 decoration-blue-400 group-hover:text-gray-600">Help</a>
+                    </div>
+
+                    
+                    <div class="w-full flex justify-start items-center gap-2 bg-white hover:bg-white/50 p-1.5 group cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.9]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                        </svg>
+
+
+                        <a href="#" class="w-[50%] text-center font-normal mt-0.5 uppercase group-hover:underline underline-offset-2 decoration-blue-400 group-hover:text-gray-600 flex-1">Contact Us</a>
+                    </div>
+                </div>
+                
+            </div> 
+
+            <!-- navbar for screen > sm for large screens -->
+            <div class="hidden sm:flex items-center gap-4 md:gap-8 text-sm md:text-base tracking-normal md:tracking-wide font-light md:font-medium  w-auto sm:w-full lg:w-auto">
+                <!-- home -->
+                <div class="w-full flex justify-start items-center gap-1 md:gap-2 rounded-md py-1 px-2 group cursor-pointer border border-white/10 hover:border-gray-500 hover:bg-gray-200 transition-all delay-75 duration-200 ease-linear text-xs md:text-sm nav homeIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.7] md:scale-[0.9]">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>
+
+                    <a href="#" class="nav-link">Home</a>
+                </div>
+
+                <!-- Products -->
+                <div class="w-full flex justify-start items-center gap-1 md:gap-2 rounded-md py-1 px-2 group cursor-pointer border border-white/10 hover:border-gray-500 hover:bg-gray-200 transition-all delay-75 duration-200 ease-linear text-xs md:text-sm nav productIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.7] md:scale-[0.9]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                    </svg>
+
+                    <a href="#" class="nav-link">Products</a>
+                </div>
+
+                <!-- contact -->
+                <div class="w-full flex justify-start items-center gap-1 md:gap-2  rounded-md py-1 px-2 group cursor-pointer border border-white/10 hover:border-gray-500 hover:bg-gray-200 transition-all delay-75 duration-200 ease-linear text-xs md:text-sm nav">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.7] md:scale-[0.9]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                    </svg> 
+
+                    <a href="#" class="nav-link">Contact</a>
+                </div>
+
+                <!-- sign -->
+                <div class="w-full flex justify-start items-center gap-1 md:gap-2 rounded-md py-1 px-2 group cursor-pointer border border-white/10 hover:border-gray-500 hover:bg-gray-200 transition-all delay-75 duration-200 ease-linear text-xs md:text-sm nav">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 scale-[0.7] md:scale-[0.9]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+
+                    <a href="#" class="w-[50%] text-center font-normal group-hover:underline underline-offset-2 decoration-blue-400 group-hover:text-gray-600">Sign</a>
+                </div>
+
+                <!-- Input & cart -->
+                <div class="flex justify-center items-center gap-2 md:gap-4 w-full">
+                    <!-- search Icon-->
+                    <svg id="searchIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hover:bg-gray-200 rounded-full opacity-70 hover:opacity-100 p-1 scale-[1.3] md:scale-[1.6] cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>  
+
+                    <!-- Input search-->
+                    <input id="searchInp" type="text" placeholder="Search here" class="hidden text-sm tracking-wide font-normal text-gray-600 border border-gray-500 p-2 w-full max-w-[75%] lg:w-[490px]   focus:outline-none rounded-sm focus:rounded-2xl focus:border-blue-500 focus:shadow-sm placeholder:text-gray-500">
+
+                    <!-- X icon-->
+                    <svg id="xIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden size-6 p-1 scale-[1.3] md:scale-[1.6] cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+
+                    <div class="hidden sm:flex justify-start items-start gap-2 rounded-md border border-white/10 hover:border-gray-600   p-2 cursor-pointer hover:bg-gray-200 cartIcon">
+                        <i class="fa-solid fa-cart-arrow-down scale-100 md:scale-[1.1] mt-1 opacity-70"></i>
+                        <a href="#" class="w-[50%] text-center text-xs md:text-base font-normal md:font-medium">Cart</a>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <!-- Hero Section-1  | Welcome greets & discount info |-->
+        <div id="hero1" class="mt-20 z-0 w-full lg:max-w-[95%] lg:mx-auto flex flex-col gap-2 justify-center items-center p-2 bg-[url('https://tse2.mm.bing.net/th/id/OIP.yOiq8HV0kqVtF5UiH_pKkwHaEv?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3')] bg-cover bg-center h-72 bg-no-repeat opacity-80 tracking-normal hover:shadow-md">
+            <h1 class="text-2xl sm:text-4xl lg:text-5xl z-50 font-semibold text-red-600">
+                Winter Season Sales Arrive!
+            </h1>
+
+            <p class="text-sm sm:text-base lg:text-xl text-shadow-amber-200 z-50 font-medium text-yellow-700/50 animate-pulse">
+                Upto 50% to 70% discount on products!
+            </p>
+
+            <span class="text-sm sm:text-base lg:text-2xl text-shadow-black text-center mt-4 text-[#916EB6] z-50 font-medium lg:font-semibold tracking-wide">
+                Enjoy Shopping with Best Category Products <br> such as
+                Cloths | Electronics | Beauty | breakFast meals. etc. 
+            </span>
+        </div>
+    </section> 
+
+    <!-- section-2 -->
+    <section id="main_section2" class="w-full flex flex-col gap-6">
+        <h2 class="text-lg sm:text-2xl xl:text-3xl font-medium tracking-wide text-gray-700 py-5 px-4 mx-auto bg-gray-100/80 w-[95%] rounded-3xl">
+            | PRODUCT CATEGORY |
+        </h2>
+    
+        <div id="category" class="w-full max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-x-20 p-2  place-items-center font-['Arial', 'Roboto']">
+            
+            <!-- cloths & wearing -->
+            <div data-category="cloths" class="w-full min-w-[320px] min-h-[350px] md:max-w-[350px] border-2 border-white hover:border-gray-400 bg-white hover:shadow-sm rounded-sm flex flex-col gap-4 p-3 relative cat">
+
+                <h2 class="text-lg md:text-xl tracking-wide font-medium lg:font-semibold text-gray-800 ml-2">
+                    Cloths & Wearings
+                </h2>
+                
+                <img src="https://media.istockphoto.com/photos/clothing-on-hanger-at-the-trendy-shop-boutique-picture-id929697584?b=1&amp;k=20&amp;m=929697584&amp;s=170667a&amp;w=0&amp;h=xKvH59XSOlHtbmcAR7MkrRhAMleN47AtywxqI43h4Bo=" 
+                class="opacity-95 hover:opacity-100 w-full max-w-[95%] mx-auto max-h-[250px] object-cover flex-1">
+
+                <a href="#" class="text-base tracking-normal font-light hover:text-blue-600 hover:underline decoration-1 underline-offset-2 inline w-[120px] absolute left-4 bottom-2">see more</a>
+            </div>
+            
+            <!-- Fashion -->
+            <div data-category="mixed1" class="w-full min-w-[320px] h-[350px] md:max-w-[350px] border-2 border-white hover:border-gray-400 bg-white hover:shadow-sm rounded-sm flex flex-col gap-4 p-3 relative cat">
+
+                <h2 class="text-lg md:text-xl tracking-wide font-medium lg:font-semibold text-gray-800 ml-3">
+                    Fashion upto 70% off
+                </h2>
+                
+                <div class="w-full flex flex-col gap-2">
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.yVFELyec8W3aJSAdeHn4rwHaE8?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="Pile of Clothes Royalty-Free Stock Photo" tabindex="0" aria-label="Pile of Clothes Royalty-Free Stock Photo" role="button" data-bm="6" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover">
+
+                        <img src="https://media.istockphoto.com/photos/clothing-on-hanger-at-the-trendy-shop-boutique-picture-id929697584?b=1&amp;k=20&amp;m=929697584&amp;s=170667a&amp;w=0&amp;h=xKvH59XSOlHtbmcAR7MkrRhAMleN47AtywxqI43h4Bo=" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover">
+                    </div>
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://www.southlandtrade.com/mm5/graphics/00000001/worldsbestdishcloth1_2.jpg" alt="Cloth Cloths Multicoloured - Free photo on Pixabay - Pixabay" tabindex="0" aria-label="Cloth Cloths Multicoloured - Free photo on Pixabay - Pixabay" role="button" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover">
+
+                    <img src="https://wallpaperaccess.com/full/1272031.jpg" alt="Clothes Wallpapers - Top Free Clothes Backgrounds - WallpaperAccess" tabindex="0" aria-label="Clothes Wallpapers - Top Free Clothes Backgrounds - WallpaperAccess" role="button" 
+                    class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover">
+                    </div>
+                </div>
+                
+
+                <a href="#" class="text-base tracking-normal font-light hover:text-blue-600 hover:underline decoration-1 underline-offset-2 inline w-[120px] absolute bottom-2 left-5">see more</a>
+            </div>
+
+            <!-- Electronics & Gadegts -->
+            <div data-category="electronics" class="w-full min-w-[320px] h-[350px] md:max-w-[350px] border-2 border-white hover:border-gray-400 bg-white hover:shadow-sm rounded-sm flex flex-col gap-4 p-3 relative cat">
+
+                <h2 class="text-lg md:text-xl tracking-wide font-medium lg:font-semibold text-gray-800 ml-3">
+                    Electronics & Gadegts
+                </h2>
+                
+                <div class="w-full flex flex-col gap-2">
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://s3-alpha.figma.com/hub/file/3057567516/resized/800x480/52524883-7424-48f1-b338-7fc1aadca08f-cover.png" alt="Free MacBook Air M2 Frontview Mockup | Figma" class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover flex-1" tabindex="0" aria-label="Free MacBook Air M2 Frontview Mockup | Figma" role="button" data-bm="6">
+
+                        <img src="https://m.media-amazon.com/images/I/81FnSOE94NL._AC_SL1500_.jpg" alt="Amazon.com: Apple AirPods Max Wireless Over-Ear Headphones, Active ..." class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover flex-1" tabindex="0" aria-label="Amazon.com: Apple AirPods Max Wireless Over-Ear Headphones, Active ..." role="button">
+                    </div>
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://static9.depositphotos.com/1682899/1153/i/950/depositphotos_11533607-stock-photo-smartphones.jpg" alt="Smartphones — Stock Photo © Shtanzman #11533607"  class="h-[120px] opacity-95 hover:opacity-100 w-[48%] flex-1 bg-cover" tabindex="0" aria-label="Smartphones — Stock Photo © Shtanzman #11533607" role="button">
+
+                    <img src="https://www.bhphotovideo.com/images/images2500x2500/apple_mr1j2ll_a_watch_series_3_42mm_1362198.jpg" alt="Watch Series" class="h-[120px] opacity-95 flex-1 hover:opacity-100 w-[48%] bg-cover" tabindex="0" aria-label="Watch Series" role="button" data-bm="6">
+                    </div>
+                </div>
+                
+
+                <a href="#" class="text-base tracking-normal font-light hover:text-blue-600 hover:underline decoration-1 underline-offset-2 inline w-[120px] absolute bottom-2 left-5">see more</a>
+            </div>
+
+            <!-- Digital Products & Services -->
+            <div data-category="mixed2" class="w-full min-w-[320px] min-h-[350px] md:max-w-[350px] border-2 border-white hover:border-gray-400 bg-white hover:shadow-sm rounded-sm flex flex-col gap-4 p-3 relative cat">
+
+                <h2 class="text-lg md:text-xl tracking-wide font-medium lg:font-semibold text-gray-800 ml-2">
+                    Digital Product's
+                </h2>
+                
+                <img src="https://i.pinimg.com/736x/c0/16/3e/c0163eab98dc5ae498e94ab3af94036a.jpg" alt="Modern White Kitchen with Appliances" class="opacity-95 hover:opacity-100 w-full max-w-[95%] mx-auto max-h-[250px] object-cover flex-1" tabindex="0" aria-label="Modern White Kitchen with Appliances" role="button">
+
+                <a href="#" class="text-base tracking-normal font-light hover:text-blue-600 hover:underline decoration-1 underline-offset-2 inline w-[120px] absolute left-4 bottom-2">see more</a>
+            </div>
+
+            <!-- Food & groceries -->
+            <div data-category="groceries" class="w-full min-w-[320px] h-[350px] md:max-w-[350px] border-2 border-white hover:border-gray-400 bg-white hover:shadow-sm rounded-sm flex flex-col gap-4 p-3 relative cat">
+
+                <h2 class="text-lg md:text-xl tracking-wide font-medium lg:font-semibold text-gray-800 ml-3">
+                    Food & Groceries
+                </h2>
+                
+                <div class="w-full flex flex-col gap-2">
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://static.vecteezy.com/system/resources/previews/029/628/476/large_2x/shopping-cart-full-of-food-and-drinks-and-supermarket-shelves-behind-grocery-shopping-concept-free-photo.jpeg" alt="Pile of Clothes Royalty-Free Stock Photo" tabindex="0" aria-label="Pile of Clothes Royalty-Free Stock Photo" role="button" data-bm="6" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover">
+
+                        <img src="https://midwestcommunity.org/wp-content/uploads/2018/02/Groceries-ThinkstockPhotos-836782690.jpg" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover">
+                    </div>
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://www.engineeryourfinances.com/wp-content/uploads/2016/02/lots-of-groceries.jpg" alt="Cloth Cloths Multicoloured - Free photo on Pixabay - Pixabay" tabindex="0" aria-label="Cloth Cloths Multicoloured - Free photo on Pixabay - Pixabay" role="button" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover border border-gray-500">
+
+                    <img src="https://hips.hearstapps.com/hmg-prod/images/food-delivering-royalty-free-image-1586293729.jpg" alt="Clothes Wallpapers - Top Free Clothes Backgrounds - WallpaperAccess" tabindex="0" aria-label="Clothes Wallpapers - Top Free Clothes Backgrounds - WallpaperAccess" role="button" 
+                    class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover">
+                    </div>
+                </div>
+                
+                <a href="#" class="text-base tracking-normal font-light hover:text-blue-600 hover:underline decoration-1 underline-offset-2 inline w-[120px] absolute bottom-2 left-5">see more</a>
+            </div>
+
+            <!-- Home & Furniture -->
+            <div data-category="furniture" class="w-full min-w-[320px] min-h-[350px] md:max-w-[350px] border-2 border-white hover:border-gray-400 bg-white hover:shadow-sm rounded-sm flex flex-col gap-4 p-3 relative cat">
+
+                <h2 class="text-lg md:text-xl tracking-wide font-medium lg:font-semibold text-gray-800 ml-2">
+                    Home Furniture
+                </h2>
+                
+                <img src="https://media.designcafe.com/wp-content/uploads/2023/07/05120637/modern-furniture-designs.jpg" alt="Home - Click N Buy" class="opacity-95 hover:opacity-100 w-full max-w-[95%] mx-auto max-h-[250px] object-cover flex-1" tabindex="0" aria-label="Home - Click N Buy" role="button">
+
+                <a href="#" class="text-base tracking-normal font-light hover:text-blue-600 hover:underline decoration-1 underline-offset-2 inline w-[120px] absolute left-4 bottom-2">see more</a>
+            </div>
+
+            <!--Sports & Outdoor -->
+            <div data-category="sport" class="w-full min-w-[320px] h-[350px] md:max-w-[350px] border-2 border-white hover:border-gray-400 bg-white hover:shadow-sm rounded-sm flex flex-col gap-4 p-3 relative cat">
+
+                <h2 class="text-lg md:text-xl tracking-wide font-medium lg:font-semibold text-gray-800 ml-3">
+                    Sport's & Outdoor
+                </h2>
+                
+                <div class="w-full flex flex-col gap-2">
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://m.media-amazon.com/images/I/81R6AaKoL8L.jpg" alt="Leader Beast MTB 26T Hybrid Cycle with Front Suspension and Disc Brake ..." class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover border border-gray-400 p-1" tabindex="0" aria-label="Leader Beast MTB 26T Hybrid Cycle with Front Suspension and Disc Brake ..." role="button">
+
+                        <img src="https://www.thestatesman.com/wp-content/uploads/2023/01/badminton-iStock-1.jpg" alt="Tough draws for Sindhu, Prannoy at Indonesian Open Badminton" class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover" tabindex="0" aria-label="Tough draws for Sindhu, Prannoy at Indonesian Open Badminton" role="button" data-bm="6">
+                    </div>
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://m.media-amazon.com/images/I/71AyxR0yeeL._SL1500_.jpg" alt="HASHTAG FITNESS Mild Steel 60kg Gym Equipment Set for Home with 8in1 ..." class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover border border-gray-400 p-1" tabindex="0" aria-label="HASHTAG FITNESS Mild Steel 60kg Gym Equipment Set for Home with 8in1 ..." role="button">
+
+                        <img src="https://www.al-monitor.com/sites/default/files/styles/article_header/public/2022-11/GettyImages-1445444327.jpg?h=a5ae579a&amp;itok=jqDcgg31" alt="World Cup soccer ball made in Egypt - Al-Monitor: Independent, trusted ..." class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover" tabindex="0" aria-label="World Cup soccer ball made in Egypt - Al-Monitor: Independent, trusted ..." role="button">
+                    </div>
+                </div>
+                
+                <a href="#" class="text-base tracking-normal font-light hover:text-blue-600 hover:underline decoration-1 underline-offset-2 inline w-[120px] absolute bottom-2 left-5">see more</a>
+            </div>
+            
+            <!-- Vehicals -->
+            <div data-category="vehicals" class="w-full min-w-[320px] h-[350px] md:max-w-[350px] border-2 border-white hover:border-gray-400 bg-white hover:shadow-sm rounded-sm flex flex-col gap-4 p-3 relative cat">
+
+                <h2 class="text-lg md:text-xl tracking-wide font-medium lg:font-semibold text-gray-800 ml-3">
+                    Vehicals (Cars & Bikes)
+                </h2>
+                
+                <div class="w-full flex flex-col gap-2">
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+
+                        <img src="https://etimg.etb2bimg.com/photo/67724946.cms" alt="Cars cars cars Stock Vector Images - Alamy"  tabindex="0" aria-label="Cars cars cars Stock Vector Images - Alamy" role="button" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover border border-gray-400 p-1">
+
+                        <img src="https://financialexpresswpcontent.s3.amazonaws.com/uploads/2018/11/hero-electric-maxi-blue-660x440.png" alt="India’s Electric Vehicle Push Must Integrate Major Thrust on E-Bikes ..." tabindex="0" aria-label="India’s Electric Vehicle Push Must Integrate Major Thrust on E-Bikes ..." role="button" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover border border-gray-400 p-1">
+                    </div>
+
+                    <div class="flex justify-center gap-2 mx-auto w-full">
+                        <img src="https://retroev.in/Admin/upload/NewEv/512462021-09-1718-23-52.webp" alt="RetroEV- Electric Vehicle Platform in India" tabindex="0" aria-label="RetroEV- Electric Vehicle Platform in India" role="button" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover border border-gray-400 p-1">
+
+                        <img src="https://d1wsfdvq5y3rer.cloudfront.net/production/vehicle/public/10811393-verna-64c0f4ed-fe58-465d-b021-4e1ef47db954.jpeg" alt="The Tech Behind Flying Cars: Could We Soon See Them in Our Skies?" tabindex="0" aria-label="The Tech Behind Flying Cars: Could We Soon See Them in Our Skies?" role="button" 
+                        class="h-[120px] opacity-95 hover:opacity-100 w-[48%] object-cover border border-gray-400 p-1">
+                    </div>
+                </div>
+                
+                <a href="#" class="text-base tracking-normal font-light hover:text-blue-600 hover:underline decoration-1 underline-offset-2 inline w-[120px] absolute bottom-2 left-5">see more</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- more products section -->
+    <section id="main_section3" class="w-full flex flex-col gap-4 my-3">
+        <h2 class="text-lg sm:text-2xl xl:text-3xl font-medium tracking-wide text-gray-700 py-5 px-4 mx-auto bg-gray-100/80 w-[95%] rounded-3xl">
+            | MORE PRODUCTS |
+        </h2>
+
+        <ul id="moreItems" class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-8 xl:gap-10 xl:place-items-center p-8 bg-gray-300 itemList_"> 
+            
+        </ul>
+    </section> 
+
+    <!-- Section-3 Cart-->
+    <!-- #Your cart -->
+    <div id="myCart" class="hidden w-full flex flex-col xl:flex-row items-start gap-6 m-auto lg:mx-auto p-4 lg:justify-center lg:gap-8 mt-24  ">
+        
+        <!-- cart data  & products -->
+        <div class="w-full xl:max-w-[950px] bg-white shadow-sm p-4 flex flex-col gap-4">
+            <!-- heading -->
+            <div class="flex items-center gap-4 sm:gap-6 p-3">
+                <i class="fa-solid fa-cart-arrow-down scale-[1.4] sm:scale-[1.6] lg:scale-[1.8] opacity-65"></i>
+            
+                <h1 class="text-xl sm:text-2xl lg:text-3xl font-medium   tracking-wide font-['Arial']">
+                    Shopping Cart
+                </h1>
+            </div>
+
+            <hr class="w-full border-gray-400 my-2">
+
+            <!-- list to add dynamically items within cart-->
+            <ul id="cartList" class="w-full flex flex-col gap-6 p-1 bg-white font-base tracking-wide text-gray-700">
+                <!-- product of cart-->
+                <li class="flex flex-col p-2 gap-4 lg:flex-row xl:flex-col lg:justify-around border-b border-gray-400">
+                    <!-- item img & desc-->
+                    <div class="w-full flex flex-col sm:flex-row items-start gap-4">
+                        <img src="https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA180_.jpg"  class="w-full max-w-[200px]" srcset="https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA180_.jpg 1x, https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA360_.jpg 2x, https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA540_.jpg 3x, https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA720_.jpg 4x">
+
+                        <div class="flex flex-col gap-2">
+                            <p class="text-sm lg:text-base tracking-wide text-gray-800 font-normal line-clamp-3 ">
+                                Boat Airpods Joy, 35Hrs battery, Fast Charge, IWP Tech, Low Latency, 2Mic Enx  
+                                C port, v5.3 bluetooth Earbuds, TWS earbuds Wireless Earphones with mic(Jet Black)
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, minus.
+                            </p>
+
+                            <span class="text-sm tracking-wide font-medium">
+                                Color : Black
+                            </span>
+
+                            <div class="max-w-[135px] h-8 p-4 rounded-full border-2 border-y-amber-300 flex items-center justify-between">
+                                <i id="removeItem" class="fa-solid fa-minus cursor-pointer hover:scale-[1.1]"></i>
+
+                                <span class="text-base font-semibold tracking-normal">
+                                    1
+                                </span>
+
+                                <i id="addItem" class="fa-solid fa-plus cursor-pointer hover:scale-[1.1]"></i>
+                            </div>
+                        </div> 
+
+                    </div>
+
+                    <!-- Price & Offer -->
+                    <div class="flex flex-col gap-2 w-full items-end">
+                        <span class="text-red-700 text-sm md:text-base tracking-normal font-medium">Limited deal offer</span>
+                        <!-- amount -->
+                        <span class="text-black/90 text-xl lg:text-2xl tracking-normal font-medium">
+                            $100 /-
+                        </span>
+
+                        <!--dumy amount -->
+                        <span class="text-balance tracking-normal font-light line-through">
+                            M.R.P: 3999/-
+                        </span>
+                    </div>
+                </li>
+
+                <!-- product of cart-->
+                <li class="flex flex-col p-2 gap-4 lg:flex-row xl:flex-col lg:justify-around border-b border-gray-400">
+                    <!-- item img & desc-->
+                    <div class="w-full flex flex-col sm:flex-row items-start gap-4">
+                        <img src="https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA180_.jpg"  class="w-full max-w-[200px]" srcset="https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA180_.jpg 1x, https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA360_.jpg 2x, https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA540_.jpg 3x, https://m.media-amazon.com/images/I/512jrg8-68L._AC_AA720_.jpg 4x">
+
+                        <div class="flex flex-col gap-2">
+                            <p class="text-sm lg:text-base tracking-wide text-gray-800 font-normal line-clamp-3 ">
+                                Boat Airpods Joy, 35Hrs battery, Fast Charge, IWP Tech, Low Latency, 2Mic Enx  
+                                C port, v5.3 bluetooth Earbuds, TWS earbuds Wireless Earphones with mic(Jet Black)
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, minus.
+                            </p>
+
+                            <span class="text-sm tracking-wide font-medium">
+                                Color : Black
+                            </span>
+
+                            <div class="max-w-[135px] h-8 p-4 rounded-full border-2 border-y-amber-300 flex items-center justify-between">
+                                <i id="removeItem" class="fa-solid fa-minus cursor-pointer hover:scale-[1.1]"></i>
+
+                                <span class="text-base font-semibold tracking-normal">
+                                    1
+                                </span>
+
+                                <i id="addItem" class="fa-solid fa-plus cursor-pointer hover:scale-[1.1]"></i>
+                            </div>
+                        </div> 
+
+                    </div>
+
+                    <!-- Price & Offer -->
+                    <div class="flex flex-col gap-2 w-full   items-end">
+                        <span class="text-red-700 text-sm md:text-base tracking-normal font-medium">Limited deal offer</span>
+                        <!-- amount -->
+                        <span class="text-black/90 text-xl lg:text-2xl tracking-normal font-medium">
+                            $100 /-
+                        </span>
+
+                        <!--dumy amount -->
+                        <span class="text-balance tracking-normal font-light line-through">
+                            M.R.P: 3999/-
+                        </span>
+                    </div>
+                </li>
+
+            </ul>
+        </div> 
+
+        <!-- sub total products & price details-->
+        <div class="flex flex-col gap-3 w-full md:max-w-[450px] bg-white shadow-sm p-7 font-['Arial']">
+            
+            <h2 class="text-lg lg:text-2xl font-medium lg:font-semibold tracking-wide text-gray-700 underline underline-offset-2">
+                Subtotal items
+            </h2>
+
+            <hr class="w-full border-gray-400 my-2">
+
+            <!-- total Price & product counts ! -->
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:mx-2">
+                <div class="flex items-center gap-3 text-base font-medium sm:font-semibold sm:text-lg tracking-wide">
+                    <span>
+                        Subtotal items 
+                    </span>
+
+                    <span>
+                        1 <!-- Here dynamic-->
+                    </span>
+                </div>
+
+                <div class="flex flex-col gap-1 tracking-wide">
+                    <span class="text-base sm:text-xl sm:font-semibold font-medium">
+                        Amount
+                    </span>
+
+                    <span class="text-lg sm:text-xl font-light">
+                        $ 100/-
+                    </span>
+                </div>
+            </div>
+
+            <hr class="w-full my-2 border-gray-400">
+
+            <button class="w-full max-w-[250px] flex justify-center items-center mx-auto my-2 p-2 border border-yellow-400 rounded-full hover:bg-yellow-400/60 shadow-sm group hover:shadow-md transition-all delay-75 duration-200 ease-linear">
+
+                <span class="tracking-wide text-base sm:text-lg text-gray-600 group-hover:text-gray-500 font-medium sm:font-semibold transition-all delay-75 duration-200 ease-linear">
+                    Proceed to Pay
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="w-full bg-black/60 h-16 flex justify-center items-center text-white">
+        <span>
+            Shop Now !
+        </span>
+    </div>
+</body>
+</html>

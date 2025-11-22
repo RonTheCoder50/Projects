@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* navbar a_tag style */
+.nav-link {
+    width: 50%;
+    text-align: center;
+    font-weight: 400;
+    text-underline-offset: 2px;
+    text-decoration-color: #60A5FA;
+}
+
+/* apply group hover variants via a parent .group hover rule */
+.group:hover .nav-link {
+    text-decoration: underline;
+    color: #4B5563;
+}
+ 
+#hero1 {
+    transition: all 0.1s ease-in-out 3s;
+    animation: animateHero;
+    animation-duration: 3s;
+    animation-delay: 1ms;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+
+    border: white;
+}
+
+#hero1:hover {
+    animation-play-state: paused;
+}
+
+@keyframes animateHero {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(15deg);
+        border: 1px solid rgb(255, 255, 32);
+    }
+    100% {
+        transform: rotateX(-15deg);
+    }
+}
