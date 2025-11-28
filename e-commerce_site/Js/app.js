@@ -1,5 +1,7 @@
 // const { prod } = require("mathjs");
 
+// const { map } = require("mathjs");
+
 document.addEventListener("DOMContentLoaded", () => {
     //Home functionality
     HomeFunctionality();
@@ -8,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     barFunction();
     searchDisplay();
 
-    //cart
-    myCart();
     // apiTest();
 
     //product switching
@@ -20,6 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //more products call
     moreProducts();
+
+    //localstorage setting
+    if(!localStorage.getItem("cartData")) {
+        let map = new Map();
+
+        localStorage.setItem("cartData", JSON.stringify([...map]));
+        console.log("map at local -> ", localStorage.getItem("cartData"));
+    }
+    
+    console.log("localstorage -> ", localStorage);
 });
 
 // <----- Nav bar ----->
@@ -74,27 +84,6 @@ function searchDisplay() {
     });
 }
 
-// <------ cart Display Toggling ------> 
-function myCart() {
-    //toggling for cart Display
-    const heroSec = document.getElementById("hero1");
-    const categorySec = document.getElementById("main_section2");
-    const cart = document.getElementById("myCart");
-    const cartToggle = document.querySelectorAll(".cartIcon");
-    const moreItemList = document.getElementById("main_section3");
-
-    for(let cartIcon of cartToggle) {
-        cartIcon.addEventListener("click", () => {
-            console.log("cart section call logg!");
-
-            heroSec.classList.toggle("hidden");
-            categorySec.classList.toggle("hidden");
-            cart.classList.toggle("hidden");
-            moreItemList.classList.toggle("hidden");
-        });
-    }
-}
-
 //Home button functionality to go back Home (cart done! , )
 function HomeFunctionality() {
 
@@ -115,7 +104,6 @@ function HomeFunctionality() {
         });
     }
 }
-
 
 // api Test for products
 async function apiTest() {
@@ -178,6 +166,7 @@ async function moreProducts() {
         const itemList = document.getElementById("moreItems");
 
         for(let item of info.products) {
+            // console.log(item);
             const newLi = document.createElement("li");
 
             newLi.classList.add("w-full", "min-w-[250px]", "lg:max-w-[300px]", "xl:max-w-[330px]", "bg-white", "shadow-sm", "hover:shadow-md", "hover:scale-[1.02]", "transition-all", "delay-75", "duration-100", "ease-linear", "rounded-md", "flex", "flex-col", "p-1", "mx-auto", "product-item", "h-auto");
@@ -229,12 +218,7 @@ async function moreProducts() {
     
 }
 
-//dom rendering using api data
-function moreItemApiCall() {
-    
-}
  
-
 //  <-------- Secondary Pages functionality -------->
 
 //product page switching
